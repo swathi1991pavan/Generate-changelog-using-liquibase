@@ -1,0 +1,50 @@
+<?xml version="1.1" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:pro="http://www.liquibase.org/xml/ns/pro" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-latest.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <changeSet author="swathi.manda (generated)" id="1691391934879-1">
+        <createTable tableName="category">
+            <column autoIncrement="true" name="category_id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="name" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="swathi.manda (generated)" id="1691391934879-2">
+        <createTable tableName="product_tbl">
+            <column autoIncrement="true" name="product_id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="category_id" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="price" type="FLOAT(12)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="swathi.manda (generated)" id="1691391934879-3">
+        <createTable tableName="user_tbl">
+            <column autoIncrement="true" name="user_id" type="INT">
+                <constraints nullable="false" primaryKey="true"/>
+            </column>
+            <column name="email" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="VARCHAR(45)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet author="swathi.manda (generated)" id="1691391934879-4">
+        <createIndex indexName="category_fk_idx" tableName="product_tbl">
+            <column name="category_id"/>
+        </createIndex>
+    </changeSet>
+    <changeSet author="swathi.manda (generated)" id="1691391934879-5">
+        <addForeignKeyConstraint baseColumnNames="category_id" baseTableName="product_tbl" constraintName="category_fk" deferrable="false" initiallyDeferred="false" onDelete="RESTRICT" onUpdate="RESTRICT" referencedColumnNames="category_id" referencedTableName="category" validate="true"/>
+    </changeSet>
+</databaseChangeLog>
